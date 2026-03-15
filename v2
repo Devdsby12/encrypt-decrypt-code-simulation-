@@ -1,0 +1,24 @@
+import random
+
+# Define the alphabet as a list of all characters to be used for encryption/decryption
+alphabet = list("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890`~!@#$%^&*()_+-=;'[],./{}:\"<>?\\| ")
+
+numbers = list(range(len(alphabet)))
+random.shuffle(numbers)
+
+encrypt_map = dict(zip(alphabet, numbers))
+
+message = input("Enter message: ")
+
+encrypted = [encrypt_map[c] for c in message]
+
+print("Encrypted:", encrypted)
+
+
+def decrypt(message, key, alphabet):
+    decrypt_map = dict(zip(key, alphabet))
+    text = "".join(decrypt_map[i] for i in message)
+    return text
+
+
+print("Decrypted:", decrypt(encrypted, numbers, alphabet))
